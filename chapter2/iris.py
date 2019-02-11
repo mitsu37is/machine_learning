@@ -3,6 +3,7 @@ import pylab
 import seaborn as sns
 import numpy as np
 import perceptron
+import decision_regions
 
 sns.set(style="whitegrid")
 df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header=None)
@@ -25,3 +26,10 @@ sns.lineplot(range(1, len(ppn.errors_) + 1), ppn.errors_)
 pylab.xlabel('Epochs')
 pylab.ylabel('Number of updates')
 pylab.savefig('chapter2/images/errors')
+
+pylab.figure(3)
+decision_regions.plot_decision_regions(X, y, classifier=ppn)
+pylab.xlabel('sepal length [cm]')
+pylab.ylabel('petal length [cm]')
+pylab.legend(loc='upper left')
+pylab.savefig('chapter2/images/decision_regions')
